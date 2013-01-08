@@ -7,10 +7,9 @@
 import StringIO
 import sys
 
-from lxml import etree
 
-from ofx import OFX
-from base import CSV2OFX
+from csv2ofx.base import CSV2OFX
+
 
 class SkandiabankenCSV2OFX(CSV2OFX):
     encoding = 'latin1'
@@ -30,6 +29,7 @@ class SkandiabankenCSV2OFX(CSV2OFX):
     def id(self, row):
         return CSV2OFX.id(self, row) + str(self.posted(row))
 
+
 def main():
     parser = SkandiabankenCSV2OFX(u'Skandiabanken', sys.argv[1], 'NOK')
     lines = sys.stdin.readlines()
@@ -38,6 +38,3 @@ def main():
     source.seek(0)
     ofx = parser.build_ofx(source)
     return ofx
-
-if __name__ == '__main__':
-    print main()

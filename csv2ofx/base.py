@@ -6,12 +6,11 @@
 
 import csv
 from datetime import datetime
-import logging
-import sys
 
 from lxml import etree
 
-from ofx import OFX, OFXStatement
+from csv2ofx.ofx import OFX, OFXStatement
+
 
 class CSV2OFX(object):
     encoding = None
@@ -74,5 +73,3 @@ class CSV2OFX(object):
                              encoding='utf-8',
                              xml_declaration=False,
                              pretty_print=True)
-
-

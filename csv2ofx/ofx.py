@@ -2,8 +2,9 @@ from datetime import datetime
 import time
 
 from lxml import etree
-from lxml.etree import Element, SubElement
+from lxml.etree import Element
 from lxml.builder import E
+
 
 class OFXStatement(object):
     def __init__(self, posted, amount, name='', memo='', fitid=0):
@@ -13,6 +14,7 @@ class OFXStatement(object):
         self.name = name
         self.memo = memo
         self.fitid = fitid
+
 
 class OFX(object):
     def __init__(self):
@@ -34,8 +36,7 @@ class OFX(object):
             E.SONRS(
                 self.status_set(0, 'INFO'),
                 E.DTSERVER(datetime.utcnow().strftime('%Y%m%d%H%M%S[+0:UTC]')),
-                E.LANGUAGE('ENG'))
-            )
+                E.LANGUAGE('ENG')))
 
     def bank_acct_from(self, bank_id, account_id, account_type):
         return E.BANKACCTFROM(
