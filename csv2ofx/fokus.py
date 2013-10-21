@@ -16,7 +16,7 @@ class FokusBankCSV2OFX(CSV2OFX):
     key_posted = 'Bokf\xf8rt dato'
     key_amount = 'Bel\xf8p i NOK'
     key_name = 'Tekst'
-    key_id = 'Bankens arkivreferanse:'
+    key_id = 'Bankens arkivreferanse'
     delimiter = ','
 
     def name(self, row):
